@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <script>
+        $(function () {
+            $("#twitter-button").on("click", function () {
+                window.location.href = "http://localhost:3000/user/request-token";
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <center>
+            <h1>TwitterApp</h1>
+            <p>Login with Twitter to view tweets.</p>
+            <p></p>
+        </center>
+
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-4"><a id="twitter-button" width="60" height="100" class="btn btn-social btn-twitter">
+                    <i class="fa fa-twitter"></i> Sign in with Twitter
+                </a></div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+    "appName": "twitterApp",
+    "version": "1.0.0",
+    "logLevel": "DEBUG",
+    "port": 14000,
+    "mongodb": {
+        "url": "mongodb://localhost:27017"
+    }
+}

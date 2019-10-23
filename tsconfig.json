@@ -1,0 +1,24 @@
+{
+  "noEmit": true,
+  "compilerOptions": {
+    "lib": [
+      "es7"
+    ],
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": [
+    "src/**/*",
+    "config/*.json"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

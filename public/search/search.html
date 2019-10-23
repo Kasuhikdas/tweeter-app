@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Statistic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <script>
+        $(function () {
+            function getUrlVars() {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+            var url = window.location.href;
+            var user = getUrlVars();
+            var userId = user.userId;
+
+            // var arguments = url.split('#')[1].split('=');
+            // arguments.shift();
+
+            $("#search").on("click", function () {
+                console.log("Clicked");
+                $('#tweets').empty();
+                var hashtag = $('#hashtag').val();
+                var location = $('#location').val();
+                hashtag =hashtag.replace("#", "%23");
+                console.log(location)
+                var url = "http://localhost:3000/user/search?";
+                url = url + "hashtag=" + hashtag + "&location=" + location;
+                console.log(url);
+                $.get(url, function (data) {
+                    //console.log(data);
+                    if (data.code == 200) {
+                        data.payload.tweets.statuses.forEach(function (tweet) {
+                            var tweetData = '<div class="row"><div class="col-sm-12 strip"><strong>' + tweet.user.name + '</strong> <span class="light"> @' + tweet.user.screen_name + ' - </span><br>' + tweet.text + '<br></div></div><hr>';
+                            console.log(tweetData);
+                            $('#tweets').append(tweetData);
+                        });
+                    }
+                });
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6 strip" id="tweets">
+
+            </div>
+            <div class="col-sm-6 strip">
+                <div class="row">
+                    <div class="col-sm-6 strip">
+                        <h3>Search</h3>
+
+                        <div class="form-group">
+                            <label for="Hashtag">Hashtag:</label>
+                            <input type="text" class="form-control" id="hashtag" placeholder="Enter Hashtag"
+                                name="Hashtag">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location:</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter Location"
+                                name="Location">
+                        </div>
+                        <button type="submit" id="search" class="btn btn-default">search</button>
+
+                        <hr>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

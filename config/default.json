@@ -1,0 +1,21 @@
+{
+    "appName": "twitterApp",
+    "version": "1.0.0",
+    "logLevel": "DEBUG",
+    "port": 3000,
+    "mongodb": {
+        "url": "mongodb://localhost:27017",
+        "database": "vyuha2-core"
+    },
+    "twitter": {
+        "consumerKey": "aITTSTscffj7F7Vq8OHMKLXGt",
+        "consumerSecret": "sjYPLk8BaDiP7FFq7kAak5U5Fhw06T2wKag0urhXZJqAGh67PA",
+        "callbackUrl": "http://localhost:3000/access-token"
+    },
+    "url": {
+        "baseUrl": "http://localhost:3000",
+        "twitterAuth": "https://api.twitter.com/oauth/authenticate?oauth_token=",
+        "stat": "/stat?userId=",
+        "search": "/search"
+    }
+}
