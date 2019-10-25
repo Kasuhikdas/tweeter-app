@@ -37,7 +37,7 @@
                 var location = $('#location').val();
                 hashtag =hashtag.replace("#", "%23");
                 console.log(location)
-                var url = "http://localhost:3000/user/search?";
+                var url = "http://67.205.134.116:3000/user/search?";
                 url = url + "hashtag=" + hashtag + "&location=" + location;
                 console.log(url);
                 $.get(url, function (data) {

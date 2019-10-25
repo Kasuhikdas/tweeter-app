@@ -30,7 +30,7 @@
             // var arguments = url.split('#')[1].split('=');
             // arguments.shift();
 
-            $.get("http://localhost:3000/user/userstat?userId=" + userId, function (data) {
+            $.get("http://67.205.134.116:3000/user/userstat?userId=" + userId, function (data) {
                 //datapayload.forEach(element => {
                 if (data.code == 200) {
                     var payload = data.payload;
@@ -54,7 +54,7 @@
 
             });
 
-            $.get("http://localhost:3000/user/tweets?userId=" + userId, function (data) {
+            $.get("http://67.205.134.116:3000/user/tweets?userId=" + userId, function (data) {
                 console.log(data);
                 if (data.code == 200) {
                     data.payload.tweet.forEach(function (tweet) {

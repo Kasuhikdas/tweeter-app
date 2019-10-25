@@ -13,6 +13,7 @@
     "config": "^3.2.3",
     "mongodb": "^3.3.3",
     "node-twitter-api": "^1.8.0",
+    "nodemon": "^1.19.4",
     "oauth": "^0.9.15",
     "restify": "^8.4.0",
     "secret": "^1.0.2",

@@ -30,6 +30,7 @@ class UserService {
                 if (err)
                     return err;
                 else {
+			console.log(requestToken);
                     requestSecretKey = requestSecret;
                     res.redirect(config.get('url.twitterAuth') + requestToken, next);
                 }
@@ -159,11 +160,11 @@ class UserService {
         try{
             console.log(new Date()+"Inside Service Twitter Callback");
             return new Promise(async (resolve, reject) => {
-                await this.databseConnection();
                 twitter.getAccessToken(requestToken, requestSecretKey, verifier, async (err, accessToken, accessSecret) => {
                     if (err)
                         console.log(err);
                     else {
+			console.log(new Date(),"access token recieved");
                         twitter.accessToken = accessToken;
                         twitter.accessSecret = accessSecret;
                         twitter.requestToken = requestToken;
@@ -173,6 +174,7 @@ class UserService {
                         if (err)
                             console.log(err);
                         else {
+				console.log(new Date(),"Credential Verified");
                             let date = new Date();
                             date.setDate(date.getDate() - 7);
                             let params = {
@@ -190,6 +192,7 @@ class UserService {
                                         tweets: {},
                                         user: {}
                                     };
+					console.log(new Date(),"Got Timeline");
                                     await data.map((tweet) => {
                                         //console.log("Text:", tweet.text, "Count: ", tweet.entities.urls.length)
     
@@ -225,7 +228,7 @@ class UserService {
                                         name: user.name,
                                         tweet: tweets
                                     }
-    
+					                await this.databseConnection();    
                                     await connection.collection("tweets").updateOne({ _id: user.id }, { $set: userData }, { upsert: true });
                                     await connection.collection("summary").updateOne({ _id: user.id }, { $set: tweetData }, { upsert: true });
                                     let redirect = config.get('url.baseUrl') + config.get('url.stat') + user.id;

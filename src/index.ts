@@ -25,7 +25,7 @@ const mongodbDbName = config.get('mongodb.database');
 /**
  * Start Server, Connect to DB & Require Routes
  */
-server.listen(config.get('port'), async() => {
+server.listen(config.get('port'),'67.205.134.116', async() => {
 
     try {
 
